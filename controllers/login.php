@@ -52,6 +52,7 @@ class Login extends SessionController{
     function saludo(){
         
     }
+
 }
 
 ?>

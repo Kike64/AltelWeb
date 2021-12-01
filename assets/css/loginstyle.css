@@ -1,10 +1,10 @@
-	/* Coded with love by Mutiullah Samim */
+
     body,
     html {
         margin: 0;
         padding: 0;
         height: 100%;          
-        background-image: url('public/source/fondoLogin.jpg');
+        background-image: url('../source/fondoLogin.jpg');
         background-size:cover;
         background-repeat: no-repeat;
         
@@ -32,12 +32,12 @@
         width: 170px;
         top: -75px;
         border-radius:25%;
-        background: #60a3bc;
+        background: #214A9C;
         padding: 10px;
         text-align: center;
     }
     .brand_logo {
-        background-image: url('source/altel.png');
+        background-image: url('../source/altel.png');
         background-size:cover;
         background-repeat: no-repeat;
         height: 150px;
