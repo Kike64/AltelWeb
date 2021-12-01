@@ -3,7 +3,7 @@
 
 define('URL', 'http://localhost/SistemaAltelWeb/');
 
-define('DB', 'expenseapp');
+define('DB', 'altelweb');
 define('HOST', 'localhost');
 define('USER', 'root');
 define('PASSWORD', '');

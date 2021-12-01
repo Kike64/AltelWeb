@@ -18,26 +18,6 @@ class User extends SessionController{
         ]);
     }
 
-    function updateBudget(){
-        if(!$this->existPOST('budget')){
-            $this->redirect('user', ['error' => Errors::ERROR_USER_UPDATEBUDGET]);
-            return;
-        }
-
-        $budget = $this->getPost('budget');
-
-        if(empty($budget) || $budget === 0 || $budget < 0){
-            $this->redirect('user', ['error' => Errors::ERROR_USER_UPDATEBUDGET_EMPTY]);
-            return;
-        }
-    
-        $this->user->setBudget($budget);
-        if($this->user->update()){
-            $this->redirect('user', ['success' => Success::SUCCESS_USER_UPDATEBUDGET]);
-        }else{
-            //error
-        }
-    }
 
     function updateName(){
         if(!$this->existPOST('name')){
