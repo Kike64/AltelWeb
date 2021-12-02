@@ -9,7 +9,9 @@ class Servicio extends SessionController{
         parent::__construct();
 
         $this->user = $this->getUserSessionData();
-        $this->servicios =  $this->model->getAll();
+        //$this->servicios =  $this->model->getAll();
+        $serviciomodel = new serviciomodel();
+        $this->servicios =  $serviciomodel->getAll();
     }
 
      function render(){

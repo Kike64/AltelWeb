@@ -98,7 +98,7 @@ class ServicioModel extends Model implements IModel {
             $query = $this->query('SELECT * FROM servicios');
 
             while($p = $query->fetch(PDO::FETCH_ASSOC)){
-                $item = new UserModel();
+                $item = new ServicioModel();
                 $item->setId($p['id']);
                 $item->setCuenta($p['cuenta']);
                 $item->setFecha_alta($p['fecha_alta']);
@@ -115,7 +115,7 @@ class ServicioModel extends Model implements IModel {
                 $item->setObservacion_problema($p['observacion_problema']);
                 $item->setDireccion($p['direccion']);
                 $item->setColonia($p['colonia']);
-                $item->setEntre_calles($p['Entre_calles']);
+                $item->setEntre_calles($p['entre_calles']);
                 $item->setFile($p['file']);
                 $item->setObservacion_servicio($p['observacion_servicio']);
                 $item->setStatus_recorrido($p['status_recorrido']);
