@@ -105,5 +105,3 @@
         <!-- End Navbar -->
 
        
-    </div>
-</div>
