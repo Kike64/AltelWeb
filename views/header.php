@@ -70,9 +70,9 @@
                         </a>
                     </li>
                     <li>
-                        <a class="nav-link" href="">
+                        <a class="nav-link" href="<?php echo constant('URL'); ?>servicio">
                             <i class="nc-icon nc-settings-tool-66"></i>
-                            <p>servicos</p>
+                            <p>servicios</p>
                         </a>
                     </li>
                     <li>

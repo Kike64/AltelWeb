@@ -1,4 +1,3 @@
-
 <?php
 
 class Dashboard extends SessionController{
