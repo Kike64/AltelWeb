@@ -29,11 +29,12 @@
                                 <?php
                                     foreach($servicios as $servicio){
                                     echo    "<tr>";
-                                    echo        "<td>".$servicio->getCuenta()."</td>";
+                                    echo        "<td >".$servicio->getCuenta()."</td>";
                                     echo        "<td>".$servicio->getNombre()."</td>";
                                     echo        "<td>".$servicio->getProblema()."</td>";
                                     echo        "<td>".$servicio->getStatus_recorrido()."</td>";
                                     echo        "<td>".$servicio->getFecha_realizar()."</td>";
+                                    echo        "<td><a href=#>ver</a></td>";
                                     echo    "</tr>";
                                     }
                                 ?>
