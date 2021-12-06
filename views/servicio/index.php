@@ -34,7 +34,7 @@
                                     echo        "<td>".$servicio->getProblema()."</td>";
                                     echo        "<td>".$servicio->getStatus_recorrido()."</td>";
                                     echo        "<td>".$servicio->getFecha_realizar()."</td>";
-                                    echo        "<td><a href=#>ver</a></td>";
+                                    echo        "<td><a href=".constant('URL')."servicio/verServicio/".$servicio->getID().">ver</a></td>";
                                     echo    "</tr>";
                                     }
                                 ?>

@@ -139,7 +139,7 @@ class ServicioModel extends Model implements IModel {
             $query = $this->prepare('SELECT * FROM servicios WHERE id = :id');
             $query->execute([ 'id' => $id]);
             $servicio = $query->fetch(PDO::FETCH_ASSOC);
-
+            
             $this->id = $servicio['id'];
             $this->cuenta = $servicio['cuenta'];
             $this->fecha_alta = $servicio['fecha_alta'];
@@ -158,7 +158,7 @@ class ServicioModel extends Model implements IModel {
             $this->colonia = $servicio['colonia'];
             $this->entre_calles = $servicio['entre_calles'];
             $this->file = $servicio['file'];
-            $this->observacion_servicio = $servicio['observacio_servicio'];
+            $this->observacion_servicio = $servicio['observacion_servicio'];
             $this->status_recorrido = $servicio['status_recorrido'];
             $this->seguimiento = $servicio['seguimiento'];
             $this->folio = $servicio['folio'];

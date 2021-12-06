@@ -3,24 +3,25 @@
 class Servicio extends SessionController{
 
     private $user;
-    //private $servicios;
 
     function __construct(){
         parent::__construct();
 
         $this->user = $this->getUserSessionData();
-        //$this->servicios =  $this->model->getAll();
-        //$serviciomodel = new serviciomodel();
-        //$this->servicios =  $serviciomodel->getAll();
-        //$this->loadModel("servicio");
+
         
     }
 
-     function render(){
+    function render(){
 
         $this->view->render('servicio/index', ['user' => $this->user, 'servicios' => $this->model->getAll()]);
     }
     
+    function verServicio($params)
+    {
+        $id = $params[0];
+        $this->view->render('servicio/verServicio', ['user' => $this->user, 'servicio' => $this->model->get($id)]);
+    }
     
 }
 
