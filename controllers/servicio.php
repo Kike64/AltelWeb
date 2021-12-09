@@ -59,9 +59,26 @@ class Servicio extends SessionController{
             $this->model->setId($id);
             $this->model->setCuenta($cuenta);
             $this->model->setFecha_alta($fecha_alta);
-        
+            $this->model->setNombre($nombre);
+            $this->model->setStatus($status);
+            $this->model->setProblema($problema);
+            $this->model->setFecha_realizar($fecha_realizar);
+            $this->model->setHora_realizar($hora_realizar);
+            $this->model->setCapturo_alta($capturo_alta);
+            $this->model->setObservacion_problema($observacion_problema);
+            $this->model->setDireccion($direccion);
+            $this->model->setColonia($colonia);
+            $this->model->setEntre_calles($entre_calles);
+            $this->model->setObservacion_servicio($observacion_servicio);
+            $this->model->setStatus_recorrido($status_recorrido);
+            $this->model->setSeguimiento($seguimiento);
+            $this->model->setFolio($folio);
+            $this->model->setNo_reagendaciones($no_reagendaciones);
 
-            $this->view->render('servicio/editarServicio', ['user' => $this->user, 'servicio' => $this->model->get($id)]);
+            $this->model->update();
+
+            $this->redirect('servicio/verServicio/'.$id);
+            
         }
 
     }

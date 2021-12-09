@@ -139,7 +139,7 @@ class ServicioModel extends Model implements IModel {
             $query = $this->prepare('SELECT * FROM servicios WHERE id = :id');
             $query->execute([ 'id' => $id]);
             $servicio = $query->fetch(PDO::FETCH_ASSOC);
-            
+
             $this->id = $servicio['id'];
             $this->cuenta = $servicio['cuenta'];
             $this->fecha_alta = $servicio['fecha_alta'];
@@ -186,6 +186,7 @@ class ServicioModel extends Model implements IModel {
         try{
             $query = $this->prepare('UPDATE servicios SET cuenta = :cuenta, fecha_alta = :fecha_alta, nombre = :nombre, status = :status, problema = :problema, fecha_realizar = :fecha_realizar, hora_realizar = :hora_realizar, capturo_alta = :capturo_alta, costo = :costo, tecnico = :tecnico, capturo_baja = :capturo_baja, fecha_baja = :fecha_baja, observacion_problema = :observacion_problema, direccion = :direccion, colonia = :colonia, entre_calles = :entre_calles, file = :file, observacion_servicio = :observacion_servicio, status_recorrido = :status_recorrido, seguimiento = :seguimiento, folio = :folio, no_reagendaciones = :no_reagendaciones WHERE id = :id');
             $query->execute([
+                'id' => $this->id,
                 'cuenta' => $this->cuenta,
                 'fecha_alta' => $this->fecha_alta,
                 'nombre' => $this->nombre,

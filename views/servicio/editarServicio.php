@@ -16,7 +16,7 @@
                             <h4 class="card-title"> Editar Servicio</h4>
                         </div>
                         <div class="card-body">
-                            <form action="../guardarServicio">
+                            <form action="guardarServicio" method='POST'>
                                 <input type="hidden" name="id" value=<?php echo $servicio->getId()?>>
                                 <div class="row">
                                     <div class="col-md-4 pr-1">
