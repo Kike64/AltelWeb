@@ -11,12 +11,10 @@
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
     <!-- CSS Files -->
+    
     <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
     <link href="assets/css/light-bootstrap-dashboard.css " rel="stylesheet" />
-    <link href="../assets/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="../assets/css/light-bootstrap-dashboard.css " rel="stylesheet" />
-    <link href="../../assets/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="../../assets/css/light-bootstrap-dashboard.css " rel="stylesheet" />
+
 
 
 </head>
@@ -37,6 +35,8 @@
         </tbody>
     </table> 
 </div> --->
+
+
 
 <div class="wrapper">
     <div class="sidebar" data-image="../assets/img/sidebar-4.jpg" data-color="blue">
