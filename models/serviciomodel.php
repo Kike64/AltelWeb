@@ -139,34 +139,34 @@ class ServicioModel extends Model implements IModel {
             $query = $this->prepare('SELECT * FROM servicios WHERE id = :id');
             $query->execute([ 'id' => $id]);
             $servicio = $query->fetch(PDO::FETCH_ASSOC);
-            $item = new ServicioModel();
+            //$item = new ServicioModel();
 
-            $item->setId($servicio['id']);
-            $item->setCuenta($servicio['cuenta']);
-            $item->setFecha_alta($servicio['fecha_alta']);
-            $item->setNombre($servicio['nombre']);
-            $item->setStatus($servicio['status']);
-            $item->setProblema($servicio['problema']);
-            $item->setFecha_realizar($servicio['fecha_realizar']);
-            $item->setHora_realizar($servicio['hora_realizar']);
-            $item->setCapturo_alta($servicio['capturo_alta']);
-            $item->setCosto($servicio['costo']);
-            $item->setTecnico($servicio['tecnico']);
-            $item->setCapturo_baja($servicio['capturo_baja']);
-            $item->setFecha_baja($servicio['fecha_baja']);
-            $item->setObservacion_problema($servicio['observacion_problema']);
-            $item->setDireccion($servicio['direccion']);
-            $item->setColonia($servicio['colonia']);
-            $item->setEntre_calles($servicio['entre_calles']);
-            $item->setFile($servicio['file']);
-            $item->setObservacion_servicio($servicio['observacion_servicio']);
-            $item->setStatus_recorrido($servicio['status_recorrido']);
-            $item->setSeguimiento($servicio['seguimiento']);
-            $item->setFolio($servicio['folio']);
-            $item->setNo_reagendaciones($servicio['no_reagendaciones']);
+            $this->setId($servicio['id']);
+            $this->setCuenta($servicio['cuenta']);
+            $this->setFecha_alta($servicio['fecha_alta']);
+            $this->setNombre($servicio['nombre']);
+            $this->setStatus($servicio['status']);
+            $this->setProblema($servicio['problema']);
+            $this->setFecha_realizar($servicio['fecha_realizar']);
+            $this->setHora_realizar($servicio['hora_realizar']);
+            $this->setCapturo_alta($servicio['capturo_alta']);
+            $this->setCosto($servicio['costo']);
+            $this->setTecnico($servicio['tecnico']);
+            $this->setCapturo_baja($servicio['capturo_baja']);
+            $this->setFecha_baja($servicio['fecha_baja']);
+            $this->setObservacion_problema($servicio['observacion_problema']);
+            $this->setDireccion($servicio['direccion']);
+            $this->setColonia($servicio['colonia']);
+            $this->setEntre_calles($servicio['entre_calles']);
+            $this->setFile($servicio['file']);
+            $this->setObservacion_servicio($servicio['observacion_servicio']);
+            $this->setStatus_recorrido($servicio['status_recorrido']);
+            $this->setSeguimiento($servicio['seguimiento']);
+            $this->setFolio($servicio['folio']);
+            $this->setNo_reagendaciones($servicio['no_reagendaciones']);
 
 
-            return $item;
+            return $this;
         }catch(PDOException $e){
             return false;
         }

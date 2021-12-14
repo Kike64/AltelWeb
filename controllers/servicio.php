@@ -25,7 +25,34 @@ class Servicio extends SessionController{
     function verServicioJSON(){
         if($this->existPOST(['id'])){
             $id = $this->getPost('id');
-            echo json_encode($this->model->get($id), JSON_UNESCAPED_UNICODE);
+            $this->model->get($id);
+            $servicio=[
+                'id' => $this->model->getId(),
+                'cuenta' => $this->model->getCuenta(),
+                'fecha_alta' => $this->model->getFecha_alta(),
+                'nombre' => $this->model->getNombre(),
+                'status' => $this->model->getStatus(),
+                'problema' => $this->model->getProblema(),
+                'fecha_realizar' => $this->model->getFecha_realizar(),
+                'hora_realizar' => $this->model->getHora_realizar(),
+                'capturo_alta' => $this->model->getCapturo_alta(),
+                'costo' => $this->model->getCosto(),
+                'tecnico' => $this->model->getTecnico(),
+                'capturo_baja' => $this->model->getCapturo_baja(),
+                'fecha_baja' => $this->model->getFecha_baja(),
+                'observacion_problema'  => $this->model->getObservacion_problema(),
+                'direccion' => $this->model->getDireccion(),
+                'colonia' => $this->model->getColonia(),
+                'entre_calles' => $this->model->getEntre_calles(),
+                'file' => $this->model->getFile(),
+                'observacion_servicio' => $this->model->getObservacion_servicio(),
+                'status_recorrido' => $this->model->getStatus_recorrido(),
+                'seguimiento' => $this->model->getSeguimiento(),
+                'folio' => $this->model->getFolio(),
+                'no_reagendaciones' => $this->model->getNo_reagendaciones()
+            ];
+
+            echo json_encode($servicio, JSON_UNESCAPED_UNICODE);
         }else{
             echo 'error';
         }
