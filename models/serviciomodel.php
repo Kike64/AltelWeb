@@ -139,33 +139,34 @@ class ServicioModel extends Model implements IModel {
             $query = $this->prepare('SELECT * FROM servicios WHERE id = :id');
             $query->execute([ 'id' => $id]);
             $servicio = $query->fetch(PDO::FETCH_ASSOC);
+            $item = new ServicioModel();
 
-            $this->id = $servicio['id'];
-            $this->cuenta = $servicio['cuenta'];
-            $this->fecha_alta = $servicio['fecha_alta'];
-            $this->nombre = $servicio['nombre'];
-            $this->status = $servicio['status'];
-            $this->problema = $servicio['problema'];
-            $this->fecha_realizar = $servicio['fecha_realizar'];
-            $this->hora_realizar = $servicio['hora_realizar'];
-            $this->capturo_alta = $servicio['capturo_alta'];
-            $this->costo = $servicio['costo'];
-            $this->tecnico = $servicio['tecnico'];
-            $this->capturo_baja = $servicio['capturo_baja'];
-            $this->fecha_baja = $servicio['fecha_baja'];
-            $this->observacion_problema = $servicio['observacion_problema'];
-            $this->direccion = $servicio['direccion'];
-            $this->colonia = $servicio['colonia'];
-            $this->entre_calles = $servicio['entre_calles'];
-            $this->file = $servicio['file'];
-            $this->observacion_servicio = $servicio['observacion_servicio'];
-            $this->status_recorrido = $servicio['status_recorrido'];
-            $this->seguimiento = $servicio['seguimiento'];
-            $this->folio = $servicio['folio'];
-            $this->no_reagendaciones = $servicio['no_reagendaciones'];
+            $item->setId($servicio['id']);
+            $item->setCuenta($servicio['cuenta']);
+            $item->setFecha_alta($servicio['fecha_alta']);
+            $item->setNombre($servicio['nombre']);
+            $item->setStatus($servicio['status']);
+            $item->setProblema($servicio['problema']);
+            $item->setFecha_realizar($servicio['fecha_realizar']);
+            $item->setHora_realizar($servicio['hora_realizar']);
+            $item->setCapturo_alta($servicio['capturo_alta']);
+            $item->setCosto($servicio['costo']);
+            $item->setTecnico($servicio['tecnico']);
+            $item->setCapturo_baja($servicio['capturo_baja']);
+            $item->setFecha_baja($servicio['fecha_baja']);
+            $item->setObservacion_problema($servicio['observacion_problema']);
+            $item->setDireccion($servicio['direccion']);
+            $item->setColonia($servicio['colonia']);
+            $item->setEntre_calles($servicio['entre_calles']);
+            $item->setFile($servicio['file']);
+            $item->setObservacion_servicio($servicio['observacion_servicio']);
+            $item->setStatus_recorrido($servicio['status_recorrido']);
+            $item->setSeguimiento($servicio['seguimiento']);
+            $item->setFolio($servicio['folio']);
+            $item->setNo_reagendaciones($servicio['no_reagendaciones']);
 
 
-            return $this;
+            return $item;
         }catch(PDOException $e){
             return false;
         }

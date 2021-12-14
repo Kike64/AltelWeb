@@ -22,6 +22,15 @@ class Servicio extends SessionController{
         $this->view->render('servicio/verServicio', ['user' => $this->user, 'servicio' => $this->model->get($id)]);
     }
 
+    function verServicioJSON(){
+        if($this->existPOST(['id'])){
+            $id = $this->getPost('id');
+            echo json_encode($this->model->get($id), JSON_UNESCAPED_UNICODE);
+        }else{
+            echo 'error';
+        }
+    }
+
     function editarServicio(){
 
         if($this->existPOST(['id'])){
