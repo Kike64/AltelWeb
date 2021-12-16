@@ -17,7 +17,9 @@ require_once 'classes/success.php';
 require_once 'config/config.php';
 
 include_once 'models/usermodel.php';
+include_once 'models/cuentamodel.php';
 include_once 'models/serviciomodel.php';
+
 
 
 $app = new App();

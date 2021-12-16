@@ -52,10 +52,57 @@ $(document).ready(function(){
         
     });
 
+    $('.buscarcuenta').click(function(e){
+
+        e.preventDefault();
+        var cuenta = $('.cuentaservicioinput').val();
+
+        $.ajax({
+            type: "POST",
+            url: "http://localhost/SistemaAltelWeb/cuenta/verCuentaJSON",
+            data: {cuenta:cuenta},
+            async: true,
+            
+            success: function (response) {
+                if(response != 'error'){
+
+                    var cuenta = JSON.parse(response);
+                    console.log(cuenta);
+
+                    $('#nuevoservicioinput_cuenta').val(cuenta.no_cuenta);
+                    $('#nuevoservicioinput_nombre').val(cuenta.nombre);
+                    $('#nuevoservicioinput_direccion').val(cuenta.direccion);
+                    $('#nuevoservicioinput_colonia').val(cuenta.colonia);
+                    $('#nuevoservicioinput_cruce').val(cuenta.cruces);
+
+                }
+
+            },
+            error: function(error){
+                console.log(error);
+            }
+        });
+
+        
+    });
+
+
+
+    $("#cuentaservicio").keypress(function(e) {
+        
+        if(e.which == 13) {
+
+        $('#nuevoservicio').modal('show');
+        e.preventDefault();
+
+        }
+        
+    });
+
 
     $('.editarservicio').click(function(e){
         e.preventDefault();
-        $('input').removeAttr('disabled');
+        $('.verservicioinput').removeAttr('disabled');
     });
 
 
@@ -70,5 +117,10 @@ $(document).ready(function(){
     $('#nuevoservicio').on('hidden.bs.modal', function () {
         $(".nuevoservicioinput").val('');
     })
+
+
+    function cargarCuenta(){
+        
+    }
 
 });

@@ -78,7 +78,7 @@
             </div>
         </div>
     </div>
-    <div class="modal fade" id="nuevoservicio" tabindex="-1" role="dialog" aria-labelledby="exampleModal" aria-hidden="true">
+    <div class="modal fade" id="nuevoservicio" tabindex="-1"  role="dialog" aria-labelledby="exampleModal" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
             <div class="modal-header">
@@ -93,43 +93,43 @@
                         <div class="col-md-6 pr-1">
                             <div class="form-group">
                                 <label>Cuenta</label>
-                                <input type="text" class="form-control nuevoservicioinput" style="color:black">
+                                <input type="text" class="form-control nuevoservicioinput" id="nuevoservicioinput_cuenta" style="color:black" disabled>
                             </div>
                         </div>
                         <div class="col-md-6 pl-1">
                             <div class="form-group">
                                 <label>Nombre</label>
-                                <input type="text" class="form-control nuevoservicioinput" style="color:black">
+                                <input type="text" class="form-control nuevoservicioinput" id="nuevoservicioinput_nombre" style="color:black" disabled>
                             </div>
                         </div>
                     </div>
                     <div class="form-group">
                         <label>Direccion</label>
-                        <input type="text" class="form-control nuevoservicioinput" style="color:black">
+                        <input type="text" class="form-control nuevoservicioinput" id="nuevoservicioinput_direccion" style="color:black" disabled>
                     </div>
                     <div class="form-group">
                         <label>Colonia</label>
-                        <input type="text" class="form-control nuevoservicioinput" style="color:black">
+                        <input type="text" class="form-control nuevoservicioinput" id="nuevoservicioinput_colonia" style="color:black" disabled>
                     </div>
                     <div class="form-group">
                         <label>Cruce</label>
-                        <input type="text" class="form-control nuevoservicioinput" style="color:black">
+                        <input type="text" class="form-control nuevoservicioinput" id="nuevoservicioinput_cruce" style="color:black" disabled>
                     </div>
                     <div class="form-group">
                         <label>Problema</label>
-                        <input type="text" class="form-control nuevoservicioinput" style="color:black">
+                        <input type="text" class="form-control nuevoservicioinput" id="nuevoservicioinput_problema" style="color:black">
                     </div>
                     <div class="row">
                         <div class="col-md-6 pr-1">
                             <div class="form-group">
                                 <label>Fecha</label>
-                                <input type="text" class="form-control nuevoservicioinput" style="color:black">
+                                <input type="text" class="form-control nuevoservicioinput" id="nuevoservicioinput_fecha" style="color:black">
                             </div>
                         </div>
                         <div class="col-md-6 pl-1">
                             <div class="form-group">
                                 <label>Hora</label>
-                                <input type="text" class="form-control nuevoservicioinput" style="color:black">
+                                <input type="text" class="form-control nuevoservicioinput" id="nuevoservicioinput_hora" style="color:black">
                             </div>
                         </div>
                     </div>
@@ -143,7 +143,7 @@
         </div>
     </div>
     <div class="modal fade " id="verserviciomodal" tabindex="-1" role="dialog" aria-labelledby="exampleModal" aria-hidden="true">
-        <div class="modal-dialog" role="document">
+        <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Ver Servicio</h5>
