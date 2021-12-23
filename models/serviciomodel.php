@@ -95,7 +95,7 @@ class ServicioModel extends Model implements IModel {
         $items = [];
 
         try{
-            $query = $this->query('SELECT * FROM servicios');
+            $query = $this->query('SELECT * FROM servicios ORDER BY id DESC');
 
             while($p = $query->fetch(PDO::FETCH_ASSOC)){
                 $item = new ServicioModel();
@@ -238,7 +238,7 @@ class ServicioModel extends Model implements IModel {
         $this->colonia = $array['colonia'];
         $this->entre_calles = $array['entre_calles'];
         $this->file = $array['file'];
-        $this->observacion_servicio = $array['observacio_servicio'];
+        $this->observacion_servicio = $array['observacion_servicio'];
         $this->status_recorrido = $array['status_recorrido'];
         $this->seguimiento = $array['seguimiento'];
         $this->folio = $array['folio'];

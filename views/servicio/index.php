@@ -22,7 +22,7 @@
                     <h4 class="card-title">Servicios</h4>
                 </div>
                 <div class="card-body table-full-width table-responsive">
-                    <table class="table table-hover table-striped">
+                    <table class="table table-hover table-striped" id="tabla_servicios">
                         <thead>
                             <th>Cuenta</th>
                             <th>Nombre</th>
@@ -123,13 +123,13 @@
                         <div class="col-md-6 pr-1">
                             <div class="form-group">
                                 <label>Fecha</label>
-                                <input type="text" class="form-control nuevoservicioinput" id="nuevoservicioinput_fecha" style="color:black">
+                                <input type="date" class="form-control nuevoservicioinput" id="nuevoservicioinput_fecha" style="color:black">
                             </div>
                         </div>
                         <div class="col-md-6 pl-1">
                             <div class="form-group">
                                 <label>Hora</label>
-                                <input type="text" class="form-control nuevoservicioinput" id="nuevoservicioinput_hora" style="color:black">
+                                <input type="time" class="form-control nuevoservicioinput" id="nuevoservicioinput_hora" style="color:black">
                             </div>
                         </div>
                     </div>

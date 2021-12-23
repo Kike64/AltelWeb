@@ -67,11 +67,12 @@ $(document).ready(function(){
         e.preventDefault();
         
         servicio = {
+            "id":"",
             "cuenta" : $('#nuevoservicioinput_cuenta').val(),
             "fecha_alta" : "",
             "nombre" : $('#nuevoservicioinput_nombre').val(),
             "status" : "",
-            "problema" : "",
+            "problema" : $('#nuevoservicioinput_problema').val(),
             "fecha_realizar" : $('#nuevoservicioinput_fecha').val(),
             "hora_realizar" : $('#nuevoservicioinput_hora').val(),
             "capturo_alta" : "",
@@ -97,9 +98,9 @@ $(document).ready(function(){
             data: {servicio:servicio},
             async: true,
             success: function (response) {
-
+                
                 if(response != 'error'){
-
+                    console.log(response);
                     var servicio = JSON.parse(response);
                     console.log(servicio);
 
