@@ -56,6 +56,104 @@ $(document).ready(function(){
 
         e.preventDefault();
         var cuenta = $('.cuentaservicioinput').val();
+            
+        if(cuenta){cargarCuenta(cuenta);}
+
+        
+    });
+
+    $('#guardarservicio').click(function(e){
+
+        e.preventDefault();
+        
+        servicio = {
+            "cuenta" : $('#nuevoservicioinput_cuenta').val(),
+            "fecha_alta" : "",
+            "nombre" : $('#nuevoservicioinput_nombre').val(),
+            "status" : "",
+            "problema" : "",
+            "fecha_realizar" : $('#nuevoservicioinput_fecha').val(),
+            "hora_realizar" : $('#nuevoservicioinput_hora').val(),
+            "capturo_alta" : "",
+            "costo" : "",
+            "tecnico" : "",
+            "capturo_baja" : "",
+            "fecha_baja" : "",
+            "observacion_problema" : "",
+            "direccion" : $('#nuevoservicioinput_direccion').val(),
+            "colonia" : $('#nuevoservicioinput_colonia').val(),
+            "entre_calles" : $('#nuevoservicioinput_cruce').val(),
+            "file" : "",
+            "observacion_servicio" : "",
+            "status_recorrido" : "",
+            "seguimiento" : "",
+            "folio" : "",
+            "no_reagendaciones" : "",
+        };
+        
+        $.ajax({
+            type: "POST",
+            url: "http://localhost/SistemaAltelWeb/servicio/guardarServicioJSON",
+            data: {servicio:servicio},
+            async: true,
+            success: function (response) {
+
+                if(response != 'error'){
+
+                    var servicio = JSON.parse(response);
+                    console.log(servicio);
+
+                }
+
+            },
+            error: function(error){
+                console.log(error);
+            }
+        });
+
+    });
+
+
+    $("#cuentaservicio").keypress(function(e) {
+        
+        if(e.which == 13) {
+        
+        var cuenta = $('.cuentaservicioinput').val();
+
+        if (cuenta){
+            cargarCuenta(cuenta);
+            e.preventDefault();
+        }
+        
+
+        }
+        
+    });
+
+
+    $('.editarservicio').click(function(e){
+        e.preventDefault();
+        $('.verservicioinput').removeAttr('disabled');
+    });
+
+
+    $('#verserviciomodal').on('hidden.bs.modal', function () {
+        $(".verservicioinput").attr('disabled','true');
+    })
+
+    $('#cuentaservicio').on('hidden.bs.modal', function () {
+        $(".cuentaservicioinput").val('');
+    })
+
+    $('#nuevoservicio').on('hidden.bs.modal', function () {
+        $(".nuevoservicioinput").val('');
+    })
+
+
+    function cargarCuenta(cuenta){
+
+        $('#nuevoservicio').modal('show');
+        $('#cuentaservicio').modal('hide');
 
         $.ajax({
             type: "POST",
@@ -82,45 +180,8 @@ $(document).ready(function(){
                 console.log(error);
             }
         });
-
-        
-    });
-
-
-
-    $("#cuentaservicio").keypress(function(e) {
-        
-        if(e.which == 13) {
-
-        $('#nuevoservicio').modal('show');
-        e.preventDefault();
-
-        }
-        
-    });
-
-
-    $('.editarservicio').click(function(e){
-        e.preventDefault();
-        $('.verservicioinput').removeAttr('disabled');
-    });
-
-
-    $('#verserviciomodal').on('hidden.bs.modal', function () {
-        $(".verservicioinput").attr('disabled','true');
-    })
-
-    $('#cuentaservicio').on('hidden.bs.modal', function () {
-        $(".cuentaservicioinput").val('');
-    })
-
-    $('#nuevoservicio').on('hidden.bs.modal', function () {
-        $(".nuevoservicioinput").val('');
-    })
-
-
-    function cargarCuenta(){
-        
     }
+
+    
 
 });

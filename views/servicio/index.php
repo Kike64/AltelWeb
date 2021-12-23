@@ -67,13 +67,13 @@
                 <form action="">
                     <div class="form-group">
                         <label>Cuenta</label>
-                        <input type="text" class="form-control cuentaservicioinput" style="color:black">
+                        <input type="text" class="form-control cuentaservicioinput" style="color:black" required>
                     </div>
                 </form>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-dismiss="modal">CANCELAR</button>
-                <button type="button" class="btn btn-primary buscarcuenta" data-dismiss="modal" data-toggle="modal" data-target="#nuevoservicio">ACEPTAR</button>
+                <button type="button" class="btn btn-primary buscarcuenta" >ACEPTAR</button>
             </div>
             </div>
         </div>
@@ -137,7 +137,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-dismiss="modal">CANCELAR</button>
-                <button type="button" class="btn btn-primary" >ACEPTAR</button>
+                <button type="button" class="btn btn-primary" id="guardarservicio">ACEPTAR</button>
             </div>
             </div>
         </div>

@@ -70,28 +70,28 @@ class Servicio extends SessionController{
 
     function guardarServicio(){
 
-        if($this->existPOST(['id', 'cuenta', 'fecha_alta', 'nombre', 'status', 'problema', 'fecha_realizar', 'hora_realizar', 'capturo_alta', 'costo', 'tecnico', 'capturo_baja', 'observacion_problema', 'direccion', 'colonia', 'entre_calles', 'observacion_servicio', 'status_recorrido', 'seguimiento', 'folio', 'no_reagendaciones'])){
-            $id = $this->getPost('id');
-            $cuenta = $this->getPost('cuenta');
-            $fecha_alta = $this->getPost('fecha_alta');
-            $nombre = $this->getPost('nombre');
-            $status = $this->getPost('status');
-            $problema = $this->getPost('problema');
-            $fecha_realizar = $this->getPost('fecha_realizar');
-            $hora_realizar = $this->getPost('hora_realizar');
-            $capturo_alta = $this->getPost('capturo_alta');
-            $costo = $this->getPost('costo');
-            $tecnico = $this->getPost('tecnico');
-            $capturo_baja = $this->getPost('capturo_baja');
-            $observacion_problema = $this->getPost('observacion_problema');
-            $direccion = $this->getPost('direccion');
-            $colonia = $this->getPost('colonia');
-            $entre_calles = $this->getPost('entre_calles');
-            $observacion_servicio = $this->getPost('observacion_servicio');
-            $status_recorrido = $this->getPost('status_recorrido');
-            $seguimiento = $this->getPost('seguimiento');
-            $folio = $this->getPost('folio');
-            $no_reagendaciones = $this->getPost('no_reagendaciones');
+        if($this->existPOST(['servicio'])){
+            $id = $this->getPost('servicio[id]');
+            $cuenta = $this->getPost('servicio[cuenta]');
+            $fecha_alta = $this->getPost('servicio[fecha_alta]');
+            $nombre = $this->getPost('servicio[nombre]');
+            $status = $this->getPost('servicio[status]');
+            $problema = $this->getPost('servicio[problema]');
+            $fecha_realizar = $this->getPost('servicio[fecha_realizar]');
+            $hora_realizar = $this->getPost('servicio[hora_realizar]');
+            $capturo_alta = $this->getPost('servicio[capturo_alta]');
+            $costo = $this->getPost('servicio[costo]');
+            $tecnico = $this->getPost('servicio[tecnico]');
+            $capturo_baja = $this->getPost('servicio[capturo_baja]');
+            $observacion_problema = $this->getPost('servicio[observacion_problema]');
+            $direccion = $this->getPost('servicio[direccion]');
+            $colonia = $this->getPost('servicio[colonia]');
+            $entre_calles = $this->getPost('servicio[entre_calles]');
+            $observacion_servicio = $this->getPost('servicio[observacion_servicio]');
+            $status_recorrido = $this->getPost('servicio[status_recorrido]');
+            $seguimiento = $this->getPost('servicio[seguimiento]');
+            $folio = $this->getPost('servicio[folio]');
+            $no_reagendaciones = $this->getPost('servicio[no_reagendaciones]');
 
             $this->model->setId($id);
             $this->model->setCuenta($cuenta);
@@ -114,11 +114,68 @@ class Servicio extends SessionController{
 
             $this->model->update();
 
+
+
             $this->redirect('servicio/verServicio/'.$id);
             
         }
 
     }
+
+    function guardarServicioJSON(){
+
+        /*if($this->existPOST(['servicio'])){
+
+            $cuenta = $this->getPost('servicio[cuenta]');
+            $fecha_alta = $this->getPost('servicio[fecha_alta]');
+            $nombre = $this->getPost('servicio[nombre]');
+            $status = $this->getPost('servicio[status]');
+            $problema = $this->getPost('servicio[problema]');
+            $fecha_realizar = $this->getPost('servicio[fecha_realizar]');
+            $hora_realizar = $this->getPost('servicio[hora_realizar]');
+            $capturo_alta = $this->getPost('servicio[capturo_alta]');
+            $costo = $this->getPost('servicio[costo]');
+            $tecnico = $this->getPost('servicio[tecnico]');
+            $capturo_baja = $this->getPost('servicio[capturo_baja]');
+            $observacion_problema = $this->getPost('servicio[observacion_problema]');
+            $direccion = $this->getPost('servicio[direccion]');
+            $colonia = $this->getPost('servicio[colonia]');
+            $entre_calles = $this->getPost('servicio[entre_calles]');
+            $observacion_servicio = $this->getPost('servicio[observacion_servicio]');
+            $status_recorrido = $this->getPost('servicio[status_recorrido]');
+            $seguimiento = $this->getPost('servicio[seguimiento]');
+            $folio = $this->getPost('servicio[folio]');
+            $no_reagendaciones = $this->getPost('servicio[no_reagendaciones]');
+
+
+            $this->model->setCuenta($cuenta);
+            $this->model->setFecha_alta($fecha_alta);
+            $this->model->setNombre($nombre);
+            $this->model->setStatus($status);
+            $this->model->setProblema($problema);
+            $this->model->setFecha_realizar($fecha_realizar);
+            $this->model->setHora_realizar($hora_realizar);
+            $this->model->setCapturo_alta($capturo_alta);
+            $this->model->setObservacion_problema($observacion_problema);
+            $this->model->setDireccion($direccion);
+            $this->model->setColonia($colonia);
+            $this->model->setEntre_calles($entre_calles);
+            $this->model->setObservacion_servicio($observacion_servicio);
+            $this->model->setStatus_recorrido($status_recorrido);
+            $this->model->setSeguimiento($seguimiento);
+            $this->model->setFolio($folio);
+            $this->model->setNo_reagendaciones($no_reagendaciones);
+
+            $this->model->update();*/
+
+
+
+            echo json_encode($this->getPost('servicio'), JSON_UNESCAPED_UNICODE);
+            
+        //}
+
+    }
+
     
 }
 
