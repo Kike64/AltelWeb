@@ -1376,6 +1376,10 @@ fieldset[disabled] .btn-neutral.active {
     color: #888888;
 }
 
+.form-group{
+    margin-bottom: 5px;
+}
+
 .btn-neutral.btn-simple:active,
 .btn-neutral.btn-simple.active {
     background-color: transparent;
@@ -1520,7 +1524,7 @@ fieldset[disabled] .btn-neutral.active {
     filter: alpha(opacity=100);
 }
 
-.form-control {
+/*.form-control {
     background-color: #FFFFFF;
     border: 1px solid #E3E3E3;
     border-radius: 4px;
@@ -1529,7 +1533,7 @@ fieldset[disabled] .btn-neutral.active {
     height: 40px;
     -webkit-box-shadow: none;
     box-shadow: none;
-}
+}*/
 
 .form-control:focus {
     background-color: #FFFFFF;
@@ -1781,6 +1785,7 @@ fieldset[disabled] .form-control {
 .table>tfoot>tr>td {
     padding: 0px 10px;
     vertical-align: middle;
+    text-align: center;
 }
 
 .table>thead>tr>th {
@@ -1793,6 +1798,31 @@ fieldset[disabled] .form-control {
     border-top: none !important;
     border-bottom: none;
     text-align: left !important;
+}
+
+table { 
+    white-space: nowrap; 
+    
+}
+
+.table>tbody>tr>td {
+    font-size: 14px;
+
+    Word-wrap: break-Word;
+    max-width: 150px;
+    overflow:hidden;
+}
+
+.table>tbody>tr.rojo {
+    background-color:rgb(241, 179, 179);
+}
+
+.table>tbody>tr.amarillo {
+    background-color:#f5f59f;
+}
+
+.table>tbody>tr.verde {
+    background-color:rgb(191, 252, 191);
 }
 
 .table .td-actions .btn {
@@ -2867,6 +2897,13 @@ Copyright (c) 2015 Daniel Eden
     margin: 0;
     color: #333333;
     font-weight: 300;
+}
+
+.label-s{
+    font-size: 14px;
+    padding: 0px;
+    margin: 0px;
+    font-weight:bold;
 }
 
 .card .avatar {
@@ -4713,6 +4750,7 @@ Copyright (c) 2015 Daniel Eden
     width: 26px !important;
     margin: 2px -15px -13px -11px;
 }
+
 
 /*--------------------------------
 

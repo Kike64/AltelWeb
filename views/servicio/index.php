@@ -9,14 +9,39 @@
 
 
 
-    <div class="content">                             
-        <div class="container-fluid">
-            
-            <div class="row justify-content-end">
-                <button type="button" class="btn btn-info" style="margin:15px" data-toggle="modal" data-target="#cuentaservicio">
-                    Nuevo Servicio
-                </button> 
+    <div class="content">
+                                
+        <div class="container-fluid">  
+        <div class="container">
+            <div class="row" style="margin-bottom:15px">
+                <div class="col">
+                    <div class="row">
+                        <div class="btn-group" role="group" aria-label="Basic example">
+                            <button type="button" class="btn btn-secondary btn-fill" id="servicios_ayer">Ayer</button>
+                            <button type="button" class="btn btn-secondary btn-fill" id="servicios_hoy">Hoy</button>
+                            <button type="button" class="btn btn-secondary btn-fill" id="servicios_manana">Mañana</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="row">
+                        <div class="btn-group" role="group" aria-label="Basic example">
+                            <button type="button" class="btn btn-primary btn-fill" id="servicios_bajas">Bajas</button>
+                            <button type="button" class="btn btn-primary btn-fill" id="servicios_hechos">Hechos</button>
+                            <button type="button" class="btn btn-primary btn-fill" id="servicios_pendientes">Pendientes</button>
+                            <button type="button" class="btn btn-primary btn-fill" id="servicios_tecnicos">Tecnicos</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="row justify-content-end">
+                        <button type="button" class="btn btn-info"  data-toggle="modal" data-target="#cuentaservicio">
+                            Nuevo Servicio
+                        </button> 
+                    </div>
+                </div>
             </div>
+        </div>         
             <div class="card strpied-tabled-with-hover">
                 <div class="card-header ">
                     <h4 class="card-title">Servicios</h4>
@@ -36,15 +61,29 @@
 
                         <?php
                             foreach($servicios as $servicio){
-                            echo    "<tr>";
-                            echo        "<td >".$servicio->getCuenta()."</td>";
+                            $tr_class = "";
+                            $st_text = "";
+                            if($servicio->getStatus_recorrido() == 1){
+                                $tr_class = "amarillo";
+                                $st_text = "En Proceso";
+                            }
+                            if($servicio->getStatus_recorrido() == 2){
+                                $tr_class = "rojo";
+                                $st_text = "Listo Para Baja";
+                            }
+                            if($servicio->getStatus_recorrido() == 3){
+                                $tr_class = "verde";
+                                $st_text = "Baja";
+                            }
+                            echo    "<tr class=".$tr_class.">";
+                            echo        "<td>".$servicio->getCuenta()."</td>";
                             echo        "<td>".$servicio->getNombre()."</td>";
                             echo        "<td>".$servicio->getProblema()."</td>";
                             echo        "<td>".$servicio->getDireccion()."</td>";
                             echo        "<td>".$servicio->getColonia()."</td>";
-                            echo        "<td>".$servicio->getStatus_recorrido()."</td>";                           
+                            echo        "<td>".$st_text."</td>";                           
                             echo        "<td>".$servicio->getFecha_realizar()."</td>";
-                            echo        "<td><button type=button  style=margin-top:5px class='btn btn-info btn-sm verservicio' servicio_id=".$servicio->getId()." data-toggle=modal data-target=#verserviciomodal>ver</button></td>";
+                            echo        "<td><button type=button  class='btn btn-dark btn-sm verservicio' servicio_id=".$servicio->getId()." data-toggle=modal data-target=#verserviciomodal>ver</button></td>";
                             echo    "</tr>";
                             }
                         ?>
@@ -157,142 +196,142 @@
                     <div class="row">
                         <div class="col-md-4 pr-1">
                             <div class="form-group">
-                                <label>Cuenta</label>
-                                <input type="text" id="cuenta" class="form-control verservicioinput" style="color:black" disabled>
+                                <label class="label-s">Cuenta</label>
+                                <input type="text" id="cuenta" class="form-control form-control-sm verservicioinput" style="color:black" disabled>
                             </div>
                         </div>
                         <div class="col-md-4 px-1">
                             <div class="form-group">
-                                <label>Fecha de alta</label>
-                                <input type="text" id="fecha_alta" class="form-control verservicioinput" style="color:black" disabled>
+                                <label class="label-s">Fecha de alta</label>
+                                <input type="text" id="fecha_alta" class="form-control form-control-sm  verservicioinput" style="color:black" disabled>
                             </div>
                         </div>
                         <div class="col-md-4 pl-1">
                             <div class="form-group">
-                                <label>Nombre</label>
-                                <input type="text" id="nombre" class="form-control verservicioinput" style="color:black" disabled>
+                                <label class="label-s">Nombre</label>
+                                <input type="text" id="nombre" class="form-control form-control-sm  verservicioinput" style="color:black" disabled>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label>Status</label>
-                                <input type="text" id="status" class="form-control verservicioinput" style="color:black" disabled>
+                                <label class="label-s">Status</label>
+                                <input type="text" id="status" class="form-control form-control-sm verservicioinput" style="color:black" disabled>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group">
-                                <label>Problema</label>
-                                <input type="text" id="problema" class="form-control verservicioinput" style="color:black" disabled>
+                                <label class="label-s">Problema</label>
+                                <input type="text" id="problema" class="form-control form-control-sm verservicioinput" style="color:black" disabled>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-4 pr-1">
                             <div class="form-group">
-                                <label>fecha a realizar</label>
-                                <input type="text" id="fecha_realizar" class="form-control verservicioinput" style="color:black" disabled>
+                                <label class="label-s">fecha a realizar</label>
+                                <input type="text" id="fecha_realizar" class="form-control form-control-sm verservicioinput" style="color:black" disabled>
                             </div>
                         </div>
                         <div class="col-md-4 px-1">
                             <div class="form-group">
-                                <label>hora</label>
-                                <input type="text" id="hora" class="form-control verservicioinput" style="color:black" disabled>
+                                <label class="label-s">hora</label>
+                                <input type="text" id="hora" class="form-control form-control-sm verservicioinput" style="color:black" disabled>
                             </div>
                         </div>
                         <div class="col-md-4 pl-1">
                             <div class="form-group">
-                                <label>capturo alta</label>
-                                <input type="text" id="capturo_alta" class="form-control verservicioinput" style="color:black" disabled>
+                                <label class="label-s">capturo alta</label>
+                                <input type="text" id="capturo_alta" class="form-control form-control-sm verservicioinput" style="color:black" disabled>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-4 pr-1">
                             <div class="form-group">
-                                <label>costo</label>
-                                <input type="text" id="costo" class="form-control verservicioinput" style="color:black" disabled>
+                                <label class="label-s">costo</label>
+                                <input type="text" id="costo" class="form-control form-control-sm verservicioinput" style="color:black" disabled>
                             </div>
                         </div>
                         <div class="col-md-4 px-1">
                             <div class="form-group">
-                                <label>tecnico</label>
-                                <input type="text" id="tecnico" class="form-control verservicioinput" style="color:black" disabled>
+                                <label class="label-s">tecnico</label>
+                                <input type="text" id="tecnico" class="form-control form-control-sm verservicioinput" style="color:black" disabled>
                             </div>
                         </div>
                         <div class="col-md-4 pl-1">
                             <div class="form-group">
-                                <label>capturo baja</label>
-                                <input type="text" id="capturo_baja" class="form-control verservicioinput" style="color:black" disabled>
+                                <label class="label-s">capturo baja</label>
+                                <input type="text" id="capturo_baja" class="form-control form-control-sm verservicioinput" style="color:black" disabled>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group">
-                                <label>observacion del Problema</label>
-                                <input type="text" id="observacion_problema" class="form-control verservicioinput" style="color:black" disabled>
+                                <label class="label-s">observacion del Problema</label>
+                                <input type="text" id="observacion_problema" class="form-control form-control-sm verservicioinput" style="color:black" disabled>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-6 pr-1">
                             <div class="form-group">
-                                <label>direccion</label>
-                                <input type="text" id="direccion" class="form-control verservicioinput" style="color:black" disabled>
+                                <label class="label-s">direccion</label>
+                                <input type="text" id="direccion" class="form-control form-control-sm verservicioinput" style="color:black" disabled>
                             </div>
                         </div>
                         <div class="col-md-6 pl-1">
                             <div class="form-group">
-                                <label>colonia</label>
-                                <input type="text" id="colonia" class="form-control verservicioinput" style="color:black" disabled>
+                                <label class="label-s">colonia</label>
+                                <input type="text" id="colonia" class="form-control form-control-sm verservicioinput" style="color:black" disabled>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group">
-                                <label>entre calles</label>
-                                <input type="text" id="entre_calles" class="form-control verservicioinput" style="color:black" disabled>
+                                <label class="label-s">entre calles</label>
+                                <input type="text" id="entre_calles" class="form-control form-control-sm verservicioinput" style="color:black" disabled>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group">
-                                <label>observacion del servicio</label>
-                                <input type="text" id="observacion_servicio" class="form-control verservicioinput" style="color:black" disabled>
+                                <label class="label-s">observacion del servicio</label>
+                                <input type="text" id="observacion_servicio" class="form-control form-control-sm verservicioinput" style="color:black" disabled>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-6 pr-1">
                             <div class="form-group">
-                                <label>status del recorrido</label>
-                                <input type="text" id="status_recorrido" class="form-control verservicioinput" style="color:black" disabled>
+                                <label class="label-s">status del recorrido</label>
+                                <input type="text" id="status_recorrido" class="form-control form-control-sm verservicioinput" style="color:black" disabled>
                             </div>
                         </div>
                         <div class="col-md-6 pl-1">
                             <div class="form-group">
-                                <label>seguimiento</label>
-                                <input type="text" id="seguimiento" class="form-control verservicioinput" style="color:black" disabled>
+                                <label class="label-s">seguimiento</label>
+                                <input type="text" id="seguimiento" class="form-control form-control-sm verservicioinput" style="color:black" disabled>
                             </div>
                         </div>
                     </div> 
                     <div class="row">
                         <div class="col-md-6 pr-1">
                             <div class="form-group">
-                                <label>folio</label>
-                                <input type="text" id="folio" class="form-control verservicioinput" style="color:black" disabled>
+                                <label class="label-s">folio</label>
+                                <input type="text" id="folio" class="form-control form-control-sm verservicioinput" style="color:black" disabled>
                             </div>
                         </div>
                         <div class="col-md-2 px-1">
                             <div class="form-group">
-                                <label>reagendaciones</label>
-                                <input type="text" id="reagendaciones" class="form-control verservicioinput" style="color:black" disabled>
+                                <label class="label-s">reagendaciones</label>
+                                <input type="text" id="reagendaciones" class="form-control form-control-sm verservicioinput" style="color:black" disabled>
                             </div>
                         </div>
                     </div> 

@@ -2,34 +2,35 @@
 
 class ServicioModel extends Model implements IModel {
 
-    private $id;
-    private $cuenta;
-    private $fecha_alta;
-    private $nombre;
-    private $status;
-    private $problema;
-    private $fecha_realizar;
-    private $hora_realizar;
-    private $capturo_alta;
-    private $costo;
-    private $tecnico;
-    private $capturo_baja;
-    private $fecha_baja;
-    private $observacion_problema;
-    private $direccion;
-    private $colonia;
-    private $entre_calles;
-    private $file;
-    private $observacion_servicio;
-    private $status_recorrido;
-    private $seguimiento;
-    private $folio;
-    private $no_reagendaciones;
+    public $id;
+    public $cuenta;
+    public $fecha_alta;
+    public $nombre;
+    public $status;
+    public $problema;
+    public $fecha_realizar;
+    public $hora_realizar;
+    public $capturo_alta;
+    public $costo;
+    public $tecnico;
+    public $capturo_baja;
+    public $fecha_baja;
+    public $observacion_problema;
+    public $direccion;
+    public $colonia;
+    public $entre_calles;
+    public $file;
+    public $observacion_servicio;
+    public $status_recorrido;
+    public $seguimiento;
+    public $folio;
+    public $no_reagendaciones;
 
 
     public function __construct(){
         parent::__construct();
 
+        $this->id = 0;
         $this->cuenta = 0;
         $this->fecha_alta = 0;
         $this->nombre = '';
@@ -96,6 +97,135 @@ class ServicioModel extends Model implements IModel {
 
         try{
             $query = $this->query('SELECT * FROM servicios ORDER BY id DESC');
+
+            while($p = $query->fetch(PDO::FETCH_ASSOC)){
+                $item = new ServicioModel();
+                $item->setId($p['id']);
+                $item->setCuenta($p['cuenta']);
+                $item->setFecha_alta($p['fecha_alta']);
+                $item->setNombre($p['nombre']);
+                $item->setStatus($p['status']);
+                $item->setProblema($p['problema']);
+                $item->setFecha_realizar($p['fecha_realizar']);
+                $item->setHora_realizar($p['hora_realizar']);
+                $item->setCapturo_alta($p['capturo_alta']);
+                $item->setCosto($p['costo']);
+                $item->setTecnico($p['tecnico']);
+                $item->setCapturo_baja($p['capturo_baja']);
+                $item->setFecha_baja($p['fecha_baja']);
+                $item->setObservacion_problema($p['observacion_problema']);
+                $item->setDireccion($p['direccion']);
+                $item->setColonia($p['colonia']);
+                $item->setEntre_calles($p['entre_calles']);
+                $item->setFile($p['file']);
+                $item->setObservacion_servicio($p['observacion_servicio']);
+                $item->setStatus_recorrido($p['status_recorrido']);
+                $item->setSeguimiento($p['seguimiento']);
+                $item->setFolio($p['folio']);
+                $item->setNo_reagendaciones($p['no_reagendaciones']);
+                
+
+                array_push($items, $item);
+            }
+            return $items;
+
+
+        }catch(PDOException $e){
+            echo $e;
+        }
+    }
+
+    public function getByDay($fecha){
+        $items = [];
+
+        try{
+            $query = $this->prepare('SELECT * FROM servicios WHERE fecha_realizar= :fecha ORDER BY id DESC');
+            $query->execute(['fecha' => $fecha]);
+            while($p = $query->fetch(PDO::FETCH_ASSOC)){
+                $item = new ServicioModel();
+                $item->setId($p['id']);
+                $item->setCuenta($p['cuenta']);
+                $item->setFecha_alta($p['fecha_alta']);
+                $item->setNombre($p['nombre']);
+                $item->setStatus($p['status']);
+                $item->setProblema($p['problema']);
+                $item->setFecha_realizar($p['fecha_realizar']);
+                $item->setHora_realizar($p['hora_realizar']);
+                $item->setCapturo_alta($p['capturo_alta']);
+                $item->setCosto($p['costo']);
+                $item->setTecnico($p['tecnico']);
+                $item->setCapturo_baja($p['capturo_baja']);
+                $item->setFecha_baja($p['fecha_baja']);
+                $item->setObservacion_problema($p['observacion_problema']);
+                $item->setDireccion($p['direccion']);
+                $item->setColonia($p['colonia']);
+                $item->setEntre_calles($p['entre_calles']);
+                $item->setFile($p['file']);
+                $item->setObservacion_servicio($p['observacion_servicio']);
+                $item->setStatus_recorrido($p['status_recorrido']);
+                $item->setSeguimiento($p['seguimiento']);
+                $item->setFolio($p['folio']);
+                $item->setNo_reagendaciones($p['no_reagendaciones']);
+                
+
+                array_push($items, $item);
+            }
+            return $items;
+
+
+        }catch(PDOException $e){
+            echo $e;
+        }
+    }
+
+    public function getByRecorrido($status){
+        $items = [];
+
+        try{
+            $query = $this->prepare('SELECT * FROM servicios WHERE status_recorrido= :st ORDER BY id DESC');
+            $query->execute(['st' => $status]);
+            while($p = $query->fetch(PDO::FETCH_ASSOC)){
+                $item = new ServicioModel();
+                $item->setId($p['id']);
+                $item->setCuenta($p['cuenta']);
+                $item->setFecha_alta($p['fecha_alta']);
+                $item->setNombre($p['nombre']);
+                $item->setStatus($p['status']);
+                $item->setProblema($p['problema']);
+                $item->setFecha_realizar($p['fecha_realizar']);
+                $item->setHora_realizar($p['hora_realizar']);
+                $item->setCapturo_alta($p['capturo_alta']);
+                $item->setCosto($p['costo']);
+                $item->setTecnico($p['tecnico']);
+                $item->setCapturo_baja($p['capturo_baja']);
+                $item->setFecha_baja($p['fecha_baja']);
+                $item->setObservacion_problema($p['observacion_problema']);
+                $item->setDireccion($p['direccion']);
+                $item->setColonia($p['colonia']);
+                $item->setEntre_calles($p['entre_calles']);
+                $item->setFile($p['file']);
+                $item->setObservacion_servicio($p['observacion_servicio']);
+                $item->setStatus_recorrido($p['status_recorrido']);
+                $item->setSeguimiento($p['seguimiento']);
+                $item->setFolio($p['folio']);
+                $item->setNo_reagendaciones($p['no_reagendaciones']);
+                
+
+                array_push($items, $item);
+            }
+            return $items;
+
+
+        }catch(PDOException $e){
+            echo $e;
+        }
+    }
+
+    public function getByPendientes(){
+        $items = [];
+
+        try{
+            $query = $this->query('SELECT * FROM servicios WHERE status_recorrido !=3 ORDER BY id DESC');
 
             while($p = $query->fetch(PDO::FETCH_ASSOC)){
                 $item = new ServicioModel();

@@ -13,8 +13,9 @@ class Servicio extends SessionController{
     }
 
     function render(){
-
-        $this->view->render('servicio/index', ['user' => $this->user, 'servicios' => $this->model->getAll()]);
+        $hoy = getdate();
+        $fecha = $hoy['year']."-".$hoy['mon']."-".$hoy['mday'];
+        $this->view->render('servicio/index', ['user' => $this->user, 'servicios' => $this->model->getByDay($fecha)]);
     }
     
     function verServicio($params){
@@ -139,6 +140,64 @@ class Servicio extends SessionController{
 
     }
 
+    function verServicioDiaJSON(){
+        if($this->existPOST(['fecha'])){
+            $fecha = $this->getPost('fecha');
+            $servicios =  $this->model->getByDay($fecha);
+            
+            /*foreach($servicios  as $servicio){
+                $item[
+                    'id' => $servicio->getId(),
+                    'cuenta' => $servicio->getCuenta(),
+                    'fecha_alta' => $servicio->getFecha_alta(),
+                    'nombre' => $servicio->getNombre(),
+                    'status' => $serviciol->getStatus(),
+                    'problema' => $servicio->getProblema(),
+                    'fecha_realizar' => $servicio->getFecha_realizar(),
+                    'hora_realizar' => $servicio->getHora_realizar(),
+                    'capturo_alta' => $servicio->getCapturo_alta(),
+                    'costo' => $servicio->getCosto(),
+                    'tecnico' => $servicio->getTecnico(),
+                    'capturo_baja' => $servicio->getCapturo_baja(),
+                    'fecha_baja' => $servicio->getFecha_baja(),
+                    'observacion_problema'  => $servicio->getObservacion_problema(),
+                    'direccion' => $servicio->getDireccion(),
+                    'colonia' => $servicio->getColonia(),
+                    'entre_calles' => $servicio->getEntre_calles(),
+                    'file' => $servicio->getFile(),
+                    'observacion_servicio' => $servicio->getObservacion_servicio(),
+                    'status_recorrido' => $servicio->getStatus_recorrido(),
+                    'seguimiento' => $servicio->getSeguimiento(),
+                    'folio' => $servicio->getFolio(),
+                    'no_reagendaciones' => $servicio->getNo_reagendaciones()
+                ]
+            }*/
+
+            //echo json_encode([$servicios[0]->getCuenta(),$servicios[1]->getCuenta(),$servicios[2]->getCuenta(),$servicios[0]->getFecha_realizar(),$servicios[1]->getFecha_realizar(),$servicios[2]->getFecha_realizar()], JSON_UNESCAPED_UNICODE);
+            echo json_encode($servicios, JSON_UNESCAPED_UNICODE);
+        }else{
+            echo 'error';
+        }
+    }
+
+    function verServicioRecorridoJSON(){
+        if($this->existPOST(['status_recorrido'])){
+            $status = $this->getPost('status_recorrido');
+            $servicios =  $this->model->getByRecorrido($status);
+            
+            echo json_encode($servicios, JSON_UNESCAPED_UNICODE);
+        }else{
+            echo 'error';
+        }
+    }
+
+    function verServicioPendientesJSON(){
+
+        $servicios =  $this->model->getByPendientes();
+            
+        echo json_encode($servicios, JSON_UNESCAPED_UNICODE);
+
+    }
     
 }
 
