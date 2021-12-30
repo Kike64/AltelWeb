@@ -89,55 +89,83 @@ $(document).ready(function(){
         
     });
 
+    $('#button_buscar').click(function(e){
+
+        e.preventDefault();
+        var key = $('#input_buscar').val();
+
+        if(key){buscarPorIndex(key);}
+
+    });
+
     $('#guardarservicio').click(function(e){
 
         e.preventDefault();
-        
-        servicio = {
-            "id":"",
-            "cuenta" : $('#nuevoservicioinput_cuenta').val(),
-            "fecha_alta" : "",
-            "nombre" : $('#nuevoservicioinput_nombre').val(),
-            "status" : "",
-            "problema" : $('#nuevoservicioinput_problema').val(),
-            "fecha_realizar" : $('#nuevoservicioinput_fecha').val(),
-            "hora_realizar" : $('#nuevoservicioinput_hora').val(),
-            "capturo_alta" : "",
-            "costo" : "",
-            "tecnico" : "",
-            "capturo_baja" : "",
-            "fecha_baja" : "",
-            "observacion_problema" : "",
-            "direccion" : $('#nuevoservicioinput_direccion').val(),
-            "colonia" : $('#nuevoservicioinput_colonia').val(),
-            "entre_calles" : $('#nuevoservicioinput_cruce').val(),
-            "file" : "",
-            "observacion_servicio" : "",
-            "status_recorrido" : "",
-            "seguimiento" : "",
-            "folio" : "",
-            "no_reagendaciones" : "",
-        };
-        
-        $.ajax({
-            type: "POST",
-            url: "http://localhost/SistemaAltelWeb/servicio/guardarServicioJSON",
-            data: {servicio:servicio},
-            async: true,
-            success: function (response) {
-                
-                if(response != 'error'){
-                    console.log(response);
-                    var servicio = JSON.parse(response);
-                    console.log(servicio);
 
+        var prob= $('#nuevoservicioinput_problema').val();
+        var fec = $('#nuevoservicioinput_fecha').val();
+        var hr = $('#nuevoservicioinput_hora').val();
+
+        if(prob && fec && hr){
+
+            var date = new Date();
+            var anio = date.getFullYear();
+            var mes = date.getMonth() + 1;
+            var dia = date.getDate();
+            var hora = date.getHours();
+            var minutos = date.getMinutes();
+            var segundos = date.getSeconds();
+            var hoy = anio+"-"+mes+'-'+dia+" "+hora+":"+minutos+":"+segundos;
+            
+            servicio = {
+                "id":"",
+                "cuenta" : $('#nuevoservicioinput_cuenta').val(),
+                "fecha_alta" : hoy,
+                "nombre" : $('#nuevoservicioinput_nombre').val(),
+                "status" : "",
+                "problema" : $('#nuevoservicioinput_problema').val(),
+                "fecha_realizar" : $('#nuevoservicioinput_fecha').val(),
+                "hora_realizar" : $('#nuevoservicioinput_hora').val(),
+                "capturo_alta" : "",
+                "costo" : "",
+                "tecnico" : "",
+                "capturo_baja" : "",
+                "fecha_baja" : "",
+                "observacion_problema" : "",
+                "direccion" : $('#nuevoservicioinput_direccion').val(),
+                "colonia" : $('#nuevoservicioinput_colonia').val(),
+                "entre_calles" : $('#nuevoservicioinput_cruce').val(),
+                "file" : "",
+                "observacion_servicio" : "",
+                "status_recorrido" : "",
+                "seguimiento" : "",
+                "folio" : "",
+                "no_reagendaciones" : "",
+            };
+            
+            $.ajax({
+                type: "POST",
+                url: "http://localhost/SistemaAltelWeb/servicio/guardarServicioJSON",
+                data: {servicio:servicio},
+                async: true,
+                success: function (response) {
+                    
+                    if(response != 'error'){
+                        console.log(response);
+                        var servicio = JSON.parse(response);
+                        console.log(servicio);
+
+                    }
+
+                },
+                error: function(error){
+                    console.log(error);
                 }
+            });
 
-            },
-            error: function(error){
-                console.log(error);
-            }
-        });
+            $('#nuevoservicio').modal('hide');
+
+        }
 
     });
 
@@ -167,16 +195,22 @@ $(document).ready(function(){
 
     $('#verserviciomodal').on('hidden.bs.modal', function () {
         $(".verservicioinput").attr('disabled','true');
-    })
+    });
 
     $('#cuentaservicio').on('hidden.bs.modal', function () {
         $(".cuentaservicioinput").val('');
-    })
+    });
 
     $('#nuevoservicio').on('hidden.bs.modal', function () {
         $(".nuevoservicioinput").val('');
-    })
+    });
 
+
+    $('#info_guardar').click(function(e){
+        e.preventDefault();
+        actualizarServicio();
+        $('#verserviciomodal').modal('hide');
+    });
 
     function cargarCuenta(cuenta){
 
@@ -366,9 +400,11 @@ $(document).ready(function(){
                     var servicio = JSON.parse(response);
                     console.log(servicio);
 
+
                     $('#id').val(servicio.id);
                     $('#cuenta').val(servicio.cuenta);
                     $('#fecha_alta').val(servicio.fecha_alta);
+                    $('#fecha_baja').val(servicio.fecha_baja);
                     $('#nombre').val(servicio.nombre);
                     $('#status').val(servicio.status);
                     $('#problema').val(servicio.problema);
@@ -387,6 +423,83 @@ $(document).ready(function(){
                     $('#seguimiento').val(servicio.seguimiento);
                     $('#folio').val(servicio.folio);
                     $('#reagendaciones').val(servicio.no_reagendaciones);
+
+                }
+
+            },
+            error: function(error){
+                console.log(error);
+            }
+        });
+    }
+
+    function actualizarServicio(){
+        
+        servicio = {
+            "id":$('#id').val(),
+            "cuenta" : $('#cuenta').val(),
+            "fecha_alta" : $('#fecha_alta').val(),
+            "nombre" : $('#nombre').val(),
+            "status" : $('#status').val(),
+            "problema" : $('#problema').val(),
+            "fecha_realizar" : $('#fecha_realizar').val(),
+            "hora_realizar" : $('#hora').val(),
+            "capturo_alta" : $('#capturo_alta').val(),
+            "costo" : $('#costo').val(),
+            "tecnico" : $('#tecnico').val(),
+            "capturo_baja" : $('#capturo_baja').val(),
+            "fecha_baja" : $('#fecha_baja').val(),
+            "observacion_problema" : $('#observacion_problema').val(),
+            "direccion" :$('#direccion').val(),
+            "colonia" : $('#colonia').val(),
+            "entre_calles" : $('#entre_calles').val(),
+            "file" : "",
+            "observacion_servicio" : $('#observacion_servicio').val(),
+            "status_recorrido" : $('#status_recorrido').val(),
+            "seguimiento" : $('#seguimiento').val(),
+            "folio" : $('#folio').val(),
+            "no_reagendaciones" : $('#reagendaciones').val()
+        };
+
+        $.ajax({
+            type: "POST",
+            url: "http://localhost/SistemaAltelWeb/servicio/actualizarServicioJSON",
+            data: {servicio:servicio},
+            async: true,
+            success: function (response) {
+
+                if(response != 'error'){
+                    console.log(response);
+                    var servicio = JSON.parse(response);
+                    console.log(servicio);
+                    
+
+                }
+
+            },
+            error: function(error){
+                console.log(error);
+            }
+        });
+
+
+    }
+
+    function buscarPorIndex(key){
+
+
+        $.ajax({
+            type: "POST",
+            url: "http://localhost/SistemaAltelWeb/servicio/buscarServicioIndexJSON",
+            data: {key:key},
+            async: true,
+            success: function (response) {
+
+                if(response != 'error'){
+                    console.log(response);
+                    var servicio = JSON.parse(response);
+                    console.log(servicio);
+                    crearTabla(servicio);
 
                 }
 

@@ -1814,7 +1814,7 @@ table {
 }
 
 .table>tbody>tr.rojo {
-    background-color:rgb(241, 179, 179);
+    background-color:rgb(240, 186, 186);
 }
 
 .table>tbody>tr.amarillo {
@@ -4785,6 +4785,9 @@ License - nucleoapp.com/license/
 /*------------------------
   change icon size
 -------------------------*/
+.nc-icon.heavy {
+    font-weight:bolder;
+}
 
 .nc-icon.lg {
     font-size: 1.33333333em;

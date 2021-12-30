@@ -221,6 +221,49 @@ class ServicioModel extends Model implements IModel {
         }
     }
 
+    public function getByIndex($key){
+        $items = [];
+
+        try{
+            $query = $this->prepare('SELECT * FROM servicios WHERE MATCH(cuenta,nombre,direccion,colonia) AGAINST(:key IN BOOLEAN MODE )');
+            $query->execute(['key' => $key]);
+            while($p = $query->fetch(PDO::FETCH_ASSOC)){
+                $item = new ServicioModel();
+                $item->setId($p['id']);
+                $item->setCuenta($p['cuenta']);
+                $item->setFecha_alta($p['fecha_alta']);
+                $item->setNombre($p['nombre']);
+                $item->setStatus($p['status']);
+                $item->setProblema($p['problema']);
+                $item->setFecha_realizar($p['fecha_realizar']);
+                $item->setHora_realizar($p['hora_realizar']);
+                $item->setCapturo_alta($p['capturo_alta']);
+                $item->setCosto($p['costo']);
+                $item->setTecnico($p['tecnico']);
+                $item->setCapturo_baja($p['capturo_baja']);
+                $item->setFecha_baja($p['fecha_baja']);
+                $item->setObservacion_problema($p['observacion_problema']);
+                $item->setDireccion($p['direccion']);
+                $item->setColonia($p['colonia']);
+                $item->setEntre_calles($p['entre_calles']);
+                $item->setFile($p['file']);
+                $item->setObservacion_servicio($p['observacion_servicio']);
+                $item->setStatus_recorrido($p['status_recorrido']);
+                $item->setSeguimiento($p['seguimiento']);
+                $item->setFolio($p['folio']);
+                $item->setNo_reagendaciones($p['no_reagendaciones']);
+                
+
+                array_push($items, $item);
+            }
+            return $items;
+
+
+        }catch(PDOException $e){
+            echo $e;
+        }
+    }
+
     public function getByPendientes(){
         $items = [];
 

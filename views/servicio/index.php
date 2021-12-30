@@ -11,37 +11,46 @@
 
     <div class="content">
                                 
-        <div class="container-fluid">  
-        <div class="container">
-            <div class="row" style="margin-bottom:15px">
-                <div class="col">
-                    <div class="row">
-                        <div class="btn-group" role="group" aria-label="Basic example">
-                            <button type="button" class="btn btn-secondary btn-fill" id="servicios_ayer">Ayer</button>
-                            <button type="button" class="btn btn-secondary btn-fill" id="servicios_hoy">Hoy</button>
-                            <button type="button" class="btn btn-secondary btn-fill" id="servicios_manana">Mañana</button>
+        <div class="container-fluid"> 
+            <div class="container">
+                <div class="row" style="margin-bottom:15px">
+                    <div class="col">
+                        <div class="row">
+                            <div class="btn-group" role="group" aria-label="Basic example">
+                                <button type="button" class="btn btn-secondary btn-fill" id="servicios_ayer">Ayer</button>
+                                <button type="button" class="btn btn-secondary btn-fill" id="servicios_hoy">Hoy</button>
+                                <button type="button" class="btn btn-secondary btn-fill" id="servicios_manana">Mañana</button>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col">
-                    <div class="row">
-                        <div class="btn-group" role="group" aria-label="Basic example">
-                            <button type="button" class="btn btn-primary btn-fill" id="servicios_bajas">Bajas</button>
-                            <button type="button" class="btn btn-primary btn-fill" id="servicios_hechos">Hechos</button>
-                            <button type="button" class="btn btn-primary btn-fill" id="servicios_pendientes">Pendientes</button>
-                            <button type="button" class="btn btn-primary btn-fill" id="servicios_tecnicos">Tecnicos</button>
+                    <div class="col">
+                        <div class="row">
+                            <div class="btn-group" role="group" aria-label="Basic example">
+                                <button type="button" class="btn btn-primary btn-fill" id="servicios_bajas">Bajas</button>
+                                <button type="button" class="btn btn-primary btn-fill" id="servicios_hechos">Hechos</button>
+                                <button type="button" class="btn btn-primary btn-fill" id="servicios_pendientes">Pendientes</button>
+                                <button type="button" class="btn btn-primary btn-fill" id="servicios_tecnicos">Tecnicos</button>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col">
-                    <div class="row justify-content-end">
-                        <button type="button" class="btn btn-info"  data-toggle="modal" data-target="#cuentaservicio">
-                            Nuevo Servicio
-                        </button> 
+                    <div class="col">
+                        <div class="row justify-content-end">
+                            <button type="button" class="btn btn-info"  data-toggle="modal" data-target="#cuentaservicio">
+                                Nuevo Servicio
+                            </button> 
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>         
+            <div class="row justify-content-end">
+                <div class="col-md-4">
+                    <div class="input-group mb-3">
+                        <button class="btn btn-outline-secondary" type="button" id="button_buscar"><i class="nc-icon heavy nc-zoom-split"></i></button>
+                        <input type="text" class="form-control" placeholder="" id="input_buscar" >
+                    </div> 
+                </div>
+            </div>    
+                 
             <div class="card strpied-tabled-with-hover">
                 <div class="card-header ">
                     <h4 class="card-title">Servicios</h4>
@@ -214,10 +223,21 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-6 pr-1">
                             <div class="form-group">
                                 <label class="label-s">Status</label>
                                 <input type="text" id="status" class="form-control form-control-sm verservicioinput" style="color:black" disabled>
+                            </div>
+                        </div>
+                        <div class="col-md-6 pl-1">
+                            <div class="form-group">
+                                <label class="label-s">status del recorrido</label>
+                                <select id="status_recorrido" class="form-control form-control-sm verservicioinput" style="color:black" disabled>
+                                    <option value="0"></option>
+                                    <option value="1">En proceso</option>
+                                    <option value="2">Listo para dar de baja</option>
+                                    <option value="3">Baja</option>
+                                </select>
                             </div>
                         </div>
                     </div>
@@ -310,8 +330,8 @@
                     <div class="row">
                         <div class="col-md-6 pr-1">
                             <div class="form-group">
-                                <label class="label-s">status del recorrido</label>
-                                <input type="text" id="status_recorrido" class="form-control form-control-sm verservicioinput" style="color:black" disabled>
+                                <label class="label-s">Fecha de baja</label>
+                                <input type="text" id="fecha_baja" class="form-control form-control-sm verservicioinput" style="color:black" disabled>
                             </div>
                         </div>
                         <div class="col-md-6 pl-1">
@@ -341,6 +361,7 @@
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger cerrar" data-dismiss="modal" >CERRAR</button>
                 <button type="button" class="btn btn-primary editarservicio" >EDITAR</button>
+                <button type="button" class="btn btn-success" id="info_guardar" >GUARDAR</button>
             </div>
             </div>
         </div>
